@@ -7,13 +7,14 @@ const uuid = require("uuid").v4;
 const querystring = require("querystring");
 const axios = require("axios");
 const cookieParser = require("cookie-parser");
-const { URLSearchParams } = require("url");
+const cors = require("cors");
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const PORT = process.env.PORT || 8000;
 const REDIRECT_URI =
   process.env.REDIRECT_URI || "http://localhost:8080/callback";
+const FRONTEND_URI = process.env.FRONTEND_URI;
 
 const authStateKey = "spotify_auth_state";
 
@@ -21,23 +22,11 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
+app.use(cors());
 
 app.get("/login", (req, res, next) => {
   const state = uuid();
-  const scopes = "user-read-private user-read-email";
+  const scopes = "user-read-private user-read-email user-read-recently-played";
 
   res.cookie(authStateKey, state);
 
@@ -47,6 +36,7 @@ app.get("/login", (req, res, next) => {
       client_id: CLIENT_ID,
       redirect_uri: REDIRECT_URI,
       state: state,
+      scope: scopes,
     })}`
   );
 });
@@ -79,17 +69,15 @@ app.get("/callback", (req, res, next) => {
           },
         }
       )
-      .then((res) => {
-        let { access_token, refresh_token } = res.data;
-        return axios.get(`https://api.spotify.com/v1/me`, {
-          headers: {
-            Authorization: "Bearer " + access_token,
-          },
-        });
-      })
-      .then((userData) => {
-        console.log(userData.data);
-        res.status(200).json(userData.data);
+      .then((response) => {
+        let { access_token, refresh_token } = response.data;
+
+        res.redirect(
+          `${FRONTEND_URI}/#${querystring.stringify({
+            access_token,
+            refresh_token,
+          })}`
+        );
       })
       .catch((err) => console.log(err));
   }

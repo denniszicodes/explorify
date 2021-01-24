@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { getHashParams } from "./utils/utils";
+import axios from "axios";
 
 function App() {
+  const saveHashParams = () => {
+    localStorage.setItem("access_token", getHashParams().access_token);
+  };
+
+  const getMyInfo = () => {
+    axios
+      .get(`https://api.spotify.com/v1/me`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => console.log(res.data));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button>
+        <a href="http://localhost:8080/login">Login!</a>
+      </button>
+      <button onClick={saveHashParams}>Get Hash params</button>
+      <button onClick={getMyInfo}>Display Me</button>
+      <p></p>
     </div>
   );
 }
