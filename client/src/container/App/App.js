@@ -1,32 +1,35 @@
-import "./App.modules.css";
-import { getHashParams } from "../../utils/utils";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { getAccessToken, getMyInfo } from "../../api/index";
 
-function App() {
-  const saveHashParams = () => {
-    localStorage.setItem("access_token", getHashParams().access_token);
-  };
+import classes from "./App.module.css";
 
-  const getMyInfo = () => {
-    axios
-      .get(`https://api.spotify.com/v1/me`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("access_token"),
-        },
-      })
-      .then((res) => console.log(res.data));
-  };
+const App = () => {
+  const [accessToken, setAccessToken] = useState("");
+  const [userInfo, setUserInfo] = useState("");
+
+  //LIFECYCLE
+  useEffect(() => {
+    const token = getAccessToken();
+    setAccessToken(token);
+  }, []);
+
+  //TEMPORARY
+  getMyInfo().then((res) => setUserInfo(JSON.stringify(res, null, 4)));
+
+  const login = accessToken ? (
+    <p>You are logged in!</p>
+  ) : (
+    <button>
+      <a href="http://localhost:8080/login">Login!</a>
+    </button>
+  );
 
   return (
-    <div className="App">
-      <button>
-        <a href="http://localhost:8080/login">Login!</a>
-      </button>
-      <button onClick={saveHashParams}>Get Hash params</button>
-      <button onClick={getMyInfo}>Display Me</button>
-      <p></p>
+    <div className={classes.App}>
+      {login}
+      <pre>{userInfo}</pre>
     </div>
   );
-}
+};
 
 export default App;
