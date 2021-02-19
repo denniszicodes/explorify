@@ -1,5 +1,5 @@
-import "./App.css";
-import { getHashParams } from "./utils/utils";
+import "./App.modules.css";
+import { getHashParams } from "../../utils/utils";
 import axios from "axios";
 
 function App() {
