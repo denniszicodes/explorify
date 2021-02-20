@@ -9,12 +9,15 @@ import { useHistory } from "react-router-dom";
 //SET Methods for Localstorage Keys
 const setLocalTokenExpiresIn = () =>
   localStorage.setItem("spotify_expires_in", getHashParams().expires_in);
+
 const setLocalTokenTimestamp = () =>
   localStorage.setItem("spotify_token_timestamp", Date.now());
+
 const setLocalAccessToken = () => {
   setLocalTokenTimestamp();
   localStorage.setItem("spotify_access_token", getHashParams().access_token);
 };
+
 const setLocalRefreshToken = () =>
   localStorage.setItem("spotify_refresh_token", getHashParams().refresh_token);
 
@@ -81,10 +84,10 @@ export const getAccessToken = () => {
 
 //Method to logout user from application
 export const logout = () => {
-  const routerHistory = useHistory();
+  // const routerHistory = useHistory();
   localStorage.removeItem("spotify_expires_in");
   localStorage.removeItem("spotify_token_timestamp");
   localStorage.removeItem("spotify_access_token");
   localStorage.removeItem("spotify_refresh_token");
-  routerHistory.push("/login");
+  // routerHistory.push("/login");
 };

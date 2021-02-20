@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { getMyInfo } from "../../api/index";
-import { getAccessToken } from "../../auth/index";
+import { getRecentlyPlayed } from "../../api/index";
 
-import { useHistory } from "react-router-dom";
+import SongContainer from "../../components/SongContainer/SongContainer";
 
 import classes from "./Explorify.module.css";
 
-const Explorify = function () {
-  const [userInfo, setUserInfo] = useState("");
-  const routerHistory = useHistory();
+const Explorify = () => {
+  const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
 
   //LIFECYCLE
   useEffect(() => {
-    const token = getAccessToken();
-    if (!token) {
-      //   return routerHistory.push("/login");
-    }
-
-    //TEMPORARY
-    getMyInfo().then((res) => {
-      setUserInfo(JSON.stringify(res, null, 4));
-    });
-  }, [routerHistory]);
+    getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
+  }, []);
 
   return (
-    <div className={classes.App}>
-      <pre>{userInfo}</pre>
+    <div className={classes.Explorify}>
+      {recentlyPlayedSongs ? (
+        <SongContainer tracks={recentlyPlayedSongs.items} />
+      ) : null}
     </div>
   );
 };
