@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { getAccessToken, getMyInfo } from "../../api/index";
+import { getAccessToken, getRecentlyPlayed } from "../../api/index";
+import SongContainer from "../../components/SongContainer/SongContainer";
 
 import classes from "./App.module.css";
+import "./colors.css";
 
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
-  const [userInfo, setUserInfo] = useState("");
+  const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
 
   //LIFECYCLE
   useEffect(() => {
     const token = getAccessToken();
     setAccessToken(token);
+    getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
   }, []);
 
   //TEMPORARY
-  getMyInfo().then((res) => setUserInfo(JSON.stringify(res, null, 4)));
-
   const login = accessToken ? (
     <p>You are logged in!</p>
   ) : (
@@ -27,7 +28,9 @@ const App = () => {
   return (
     <div className={classes.App}>
       {login}
-      <pre>{userInfo}</pre>
+      {recentlyPlayedSongs ? (
+        <SongContainer tracks={recentlyPlayedSongs.items} />
+      ) : null}
     </div>
   );
 };
