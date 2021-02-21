@@ -1,22 +1,18 @@
 import React from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { getAccessToken } from "../../auth/index";
+import { getAccessToken } from "../auth/auth";
 
-import Login from "../../components/Login/Login";
-import Error404 from "../../components/404/404";
+import Login from "../views/Login/Login";
+import Home from "../views/Home/Home";
+import Analyze from "../views/Analyze/Analyze";
+import Error404 from "../views/NotFound404/NotFound404";
 
-import Explorify from "../Explorify/Explorify";
-import Home from "../Home/Home";
-import Analyze from "../Analyze/Analyze";
+import Explorify from "../layouts/Explorify/Explorify";
 
-import GuardedRoute from "../../routes/GuardedRoute/GuardedRoute";
-import UngardedRoute from "../../routes/UnguardedRoute/UnguardedRoute";
+import GuardedRoute from "./middleware/GuardedRoute";
+import UngardedRoute from "./middleware/UnguardedRoute";
 
-import "./colors.css";
-import "./base.css";
-
-const App = () => {
+const Routes = () => {
   const token = getAccessToken();
 
   return (
@@ -37,4 +33,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Routes;

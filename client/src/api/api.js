@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAccessToken } from "../auth/index";
+import { getAccessToken } from "../auth/auth";
 
 //------------------------------------------------
 //---------> API CALLS
