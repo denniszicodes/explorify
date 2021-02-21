@@ -14,6 +14,7 @@ import GuardedRoute from "../../routes/GuardedRoute/GuardedRoute";
 import UngardedRoute from "../../routes/UnguardedRoute/UnguardedRoute";
 
 import "./colors.css";
+import "./base.css";
 
 const App = () => {
   const token = getAccessToken();
