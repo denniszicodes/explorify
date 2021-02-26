@@ -10,6 +10,7 @@ const Analyze = () => {
     <div>
       Analyze {name}
       <img src={images[0].url} alt="test" />
+
       <Loader width="50" height="50" />
     </div>
   );
