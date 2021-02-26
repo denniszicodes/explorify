@@ -24,7 +24,10 @@ const Home = () => {
       <div className={classes.bottomLeft}></div>
       <div className={classes.bottomRight}>
         {recentlyPlayedSongs ? (
-          <SongContainer tracks={recentlyPlayedSongs.items} />
+          <SongContainer
+            tracks={recentlyPlayedSongs.items}
+            title="Recently played songs"
+          />
         ) : (
           <Loader />
         )}

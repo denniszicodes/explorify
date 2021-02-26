@@ -17,11 +17,10 @@ const determineGreeting = () => {
   return welcomeString;
 };
 
-const WelcomeUser = (props) => {
-  const { display_name: name, images } = useContext(AuthContext);
+const WelcomeUser = () => {
+  const { display_name: name } = useContext(AuthContext);
 
   const greeting = determineGreeting();
-  const user = "Testuser";
 
   return <h1 className={classes.WelcomeUser}>{`${greeting}, ${name}!`}</h1>;
 };
