@@ -13,7 +13,7 @@ const SearchIcon = () => {
           type="search"
           placeholder="Search for Songs, Artists, ..."
           className={classes.searchBar}
-          required="true"
+          required={true}
         />
       </form>
     </>
