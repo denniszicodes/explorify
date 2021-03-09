@@ -3,10 +3,10 @@ import SongItem from "../SongItem/SongItem";
 
 import classes from "./SongContainer.module.css";
 
-const SongContainer = ({ tracks, className }) => {
+const SongContainer = ({ tracks, className, image }) => {
   const trackArr = tracks.map((item, index) => (
     <li key={item.id + index}>
-      <SongItem trackData={item} pos={index} noImage={true} />
+      <SongItem trackData={item} pos={index} noImage={!image} />
     </li>
   ));
 
@@ -18,4 +18,3 @@ const SongContainer = ({ tracks, className }) => {
 };
 
 export default SongContainer;
- 

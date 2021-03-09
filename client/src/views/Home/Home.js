@@ -4,6 +4,7 @@ import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
 import TopArtist from "./components/TopArtist/TopArtist";
 import ArtistScroller from "./components/ArtistScroller/ArtistScroller";
+import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -18,13 +19,16 @@ import Loader from "../../components/Loader/Loader";
 
 const Home = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
-  const [usersTopTrack, setUsersTopTrack] = useState(null);
+  const [usersTopTracks, setUsersTopTracks] = useState(null);
   const [usersTopArtists, setUsersTopArtists] = useState(null);
   const [usersTopArtistTopTracks, setUsersTopArtistTopTracks] = useState(null);
   const { country } = useContext(AuthContext);
 
   useEffect(() => {
-    getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
+    getRecentlyPlayed().then(({ data }) => {
+      const tracks = data.items.map((item) => item.track);
+      setRecentlyPlayedSongs(tracks);
+    });
 
     getUsersTopArtistsShort()
       .then(({ data }) => {
@@ -33,7 +37,7 @@ const Home = () => {
       })
       .then(({ data }) => setUsersTopArtistTopTracks(data));
 
-    getUsersTopTracksShort().then(({ data }) => setUsersTopTrack(data.items));
+    getUsersTopTracksShort().then(({ data }) => setUsersTopTracks(data.items));
   }, [country]);
 
   return (
@@ -52,6 +56,31 @@ const Home = () => {
       ) : (
         <Loader className={classes.Loader} />
       )}
+      <div className={classes.songOverview}>
+        {usersTopTracks ? (
+          <TitleWrapper
+            headline={"Your top tracks"}
+            className={classes.topTracks}
+          >
+            <SongContainer tracks={usersTopTracks.slice(0, 10)} image={true} />
+          </TitleWrapper>
+        ) : (
+          <Loader className={classes.Loader} />
+        )}
+        {recentlyPlayedSongs ? (
+          <TitleWrapper
+            headline={"Recently played songs"}
+            className={classes.recentlyPlayed}
+          >
+            <SongContainer
+              tracks={recentlyPlayedSongs.slice(0, 10)}
+              image={true}
+            />
+          </TitleWrapper>
+        ) : (
+          <Loader className={classes.Loader} />
+        )}
+      </div>
     </div>
   );
 };

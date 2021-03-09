@@ -15,3 +15,20 @@
 .gridParent > * {
   margin-bottom: 5rem;
 }
+
+.songOverview {
+  height: 55em;
+  justify-content: space-between;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.recentlyPlayed {
+  margin-left: 5rem;
+  min-width: 0;
+}
+
+.topTracks {
+  min-width: 0;
+}
