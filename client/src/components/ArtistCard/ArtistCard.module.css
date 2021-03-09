@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-grey-1-50);
+  border-radius: 0.4rem;
 }
 
 .imageContainer {
