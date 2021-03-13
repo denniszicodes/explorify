@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { getAccessToken } from "../auth/auth";
+import { getAccessToken } from "../auth";
 
 import Login from "../views/Login/Login";
 import Home from "../views/Home/Home";

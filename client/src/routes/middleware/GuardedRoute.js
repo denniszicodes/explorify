@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import Explorify from "../../layouts/Explorify/Explorify";
+import Explorify from "../../layouts/Explorify";
 
 const GuardedRoute = ({ component: Component, auth, ...rest }) => (
   <Route
