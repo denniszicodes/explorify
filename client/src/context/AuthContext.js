@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 
-import { getAccessToken, logout } from "../auth/auth";
-import { getMe } from "../api/api";
-import LoaderScreen from "../components/LoaderScreen/LoaderScreen";
+import { getAccessToken, logout } from "../auth";
+import { getMe } from "../api";
+import LoaderScreen from "../components/LoaderScreen";
 
 export const AuthContext = createContext();
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader";
 import classes from "./LoaderScreen.module.css";
 
 const LoaderScreen = () => {

@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./NavItem.module.css";
 import { NavLink } from "react-router-dom";
-import Icon from "../../../../components/Icons/Icon/Icon";
-import { capitalizeWord } from "../../../../utils/utils";
+import Icon from "../../../../components/Icons/Icon";
+import { capitalizeWord } from "../../../../utils";
 
 /**
  * Returns true if the current location is active on the NavItem

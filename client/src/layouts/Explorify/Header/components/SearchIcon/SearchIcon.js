@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./SearchIcon.module.css";
-import Icon from "../../../../../components/Icons/Icon/Icon";
+import Icon from "../../../../../components/Icons/Icon";
 
 const SearchIcon = () => {
   return (

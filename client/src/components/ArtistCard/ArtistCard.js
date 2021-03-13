@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ArtistCard.module.css";
 import { Link } from "react-router-dom";
-import Icon from "../../components/Icons/Icon/Icon";
+import Icon from "../../components/Icons/Icon";
 
 const ArtistCard = ({ artist }) => {
   return (

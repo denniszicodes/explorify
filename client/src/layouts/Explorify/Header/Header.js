@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import classes from "./Header.module.css";
-import { logout } from "../../../auth/auth";
+import { logout } from "../../../auth";
 
-import SearchIcon from "./components/SearchIcon/SearchIcon";
+import SearchIcon from "./components/SearchIcon";
 import { AuthContext } from "../../../context/AuthContext";
 
 const Header = () => {

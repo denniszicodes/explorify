@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./SideNav.module.css";
-import NavItem from "./NavItem/NavItem";
-import AppTitle from "./AppTitle/AppTitle";
+import NavItem from "./NavItem";
+import AppTitle from "./AppTitle";
 
 const navItems = [
   { target: "/", icon: "icon-home" },

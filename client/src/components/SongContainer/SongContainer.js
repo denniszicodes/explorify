@@ -1,5 +1,5 @@
 import React from "react";
-import SongItem from "../SongItem/SongItem";
+import SongItem from "../SongItem";
 
 import classes from "./SongContainer.module.css";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./SongItem.module.css";
-import Icon from "../Icons/Icon/Icon";
+import Icon from "../Icons/Icon";
 import { Link } from "react-router-dom";
 
-import { transformDuration } from "../../utils/utils";
+import { transformDuration } from "../../utils";
 
 const SongItem = ({ trackData, noImage, pos }) => {
   const album = trackData.album;

@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./Explorify.module.css";
 
-import SideNav from "./SideNav/SideNav";
-import Header from "./Header/Header";
+import SideNav from "./SideNav";
+import Header from "./Header";
 
 const Explorify = ({ children }) => {
   return (
