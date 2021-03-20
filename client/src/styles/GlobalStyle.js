@@ -1,5 +1,7 @@
-/* @import-normalize; */
+import { createGlobalStyle } from "styled-components/macro";
+import theme from "./theme";
 
+const GlobalStyle = createGlobalStyle`
 :root {
   --color-spotify-logo-green: #1ed760;
   --color-spotify-green: #1db954;
@@ -21,22 +23,27 @@
   --font-size-base: 1rem;
   --font-size-xs: 1.2rem;
   --font-size-sm: 1.4rem;
-  --font-size-md: 1.6rem;
+  --font-size-md: 1.5rem;
+  --font-size-md-2: 1.7rem;
   --font-size-lg: 2rem;
   --font-size-xl: 2.4rem;
   --font-size-xxl: 2.8rem;
-  --font-size-xxxl: 3.2rem;
+  --font-size-xxxl: 3.0rem;
 
   --spacing-size-base: 2rem;
-  --spacing-size-xxs: 0.25rem;
+  --spacing-size-xxs: 0.20rem;
   --spacing-size-xs: 0.5rem;
+  --spacing-size-s: 0.75rem;
   --spacing-size-sm-1: 1rem;
   --spacing-size-sm-2: 1.25rem;
   --spacing-size-sm-3: 1.5rem;
   --spacing-size-sm-4: 1.75rem;
   --spacing-size-md: 2rem;
+  --spacing-size-md-2: 2.5rem;
   --spacing-size-lg: 3rem;
+  --spacing-size-lg-2: 3.5rem;
   --spacing-size-xl: 5rem;
+  --spacing-size-xl-2: 7rem;
   --spacing-size-xxl: 10rem;
 }
 
@@ -53,7 +60,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
+  font-size: 60.5%; /* Usually 62.5% with 1rem = 10px; Browser Default is 16px */
 
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
@@ -84,14 +91,22 @@ html:focus-within {
 body {
   min-height: 100%;
   overflow-x: hidden;
+  background-color: var(--color-grey-1);
+  color: var(--color-white)
+}
+
+#root {
+    min-height: 100%;
 }
 
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
+  width: 100%;
   display: block;
 }
+
+vertical-align: middle;
 
 input,
 select,
@@ -99,6 +114,9 @@ textarea,
 button {
   font-family: inherit;
   outline: none;
+  &::placeholder {
+      opacity: 0.7;
+  }
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
@@ -116,8 +134,15 @@ button {
   }
 }
 
-@media (max-width: 900px) {
+@media ${theme.bp.desktopXS} {
   html {
-    font-size: 60.5%; /* 1rem = 10px; Browser Default is 16px */
+    font-size: 58.5%; 
   }
 }
+
+@media ${theme.bp.tabletS} {
+  html {
+    font-size: 55.5%; 
+  }
+}`;
+export default GlobalStyle;
