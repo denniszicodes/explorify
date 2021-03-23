@@ -7,10 +7,13 @@ import styled from "styled-components/macro";
 import theme from "../styles/theme";
 
 import ROUTES, { RenderRoutes } from "../routes/Routes";
+import useSWR from "swr";
+import Loader from "../components/Loader";
 
 // ---------------------------------------
 // -------------  STYLING
 // ---------------------------------------
+
 const AppContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -40,7 +43,7 @@ const ContentLayout = styled.div`
   }
 `;
 
-const View = styled.main`
+const Page = styled.main`
   height: 100%;
   z-index: 2;
 
@@ -102,18 +105,26 @@ const Header = styled.header`
 // ---------------------------------------
 
 const Explorify = () => {
+  const { data: user } = useSWR("/me");
+
   return (
     <AppContainer>
       <NavLayout>
         <SideNav />
       </NavLayout>
       <ContentLayout>
-        <Header>
-          <HeaderComponents />
-        </Header>
-        <View>
-          <RenderRoutes routes={ROUTES} />
-        </View>
+        {user ? (
+          <>
+            <Header>
+              <HeaderComponents />
+            </Header>
+            <Page>
+              <RenderRoutes routes={ROUTES} />
+            </Page>
+          </>
+        ) : (
+          <Loader />
+        )}
       </ContentLayout>
     </AppContainer>
   );
