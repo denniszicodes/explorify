@@ -77,6 +77,8 @@ const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
   );
 
+  console.log(tracks);
+
   const imageURL = artist.images.length > 0 && artist.images[1].url;
 
   return (
@@ -84,11 +86,11 @@ const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
       {tracks ? (
         <TitleWrapper
           headline={`${headline} - ${artist.name}`}
-          link={`/explore/artists/${artist.id}`}
+          link={`/explore/artist/${artist.id}`}
         >
           <ContentWrapper>
             <ArtistImageWrapper>
-              <Link to={`/explore/artists/${artist.id}`}>
+              <Link to={`/explore/artist/${artist.id}`}>
                 {imageURL ? (
                   <img src={artist.images[1].url} alt={`${artist.name}`} />
                 ) : (

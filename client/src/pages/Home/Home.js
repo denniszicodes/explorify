@@ -28,6 +28,7 @@ const SongOverview = styled.div`
 
   & > * {
     min-width: 0;
+    flex: 1;
   }
 
   @media ${theme.bp.desktopM} {
