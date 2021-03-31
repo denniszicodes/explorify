@@ -54,13 +54,13 @@ const ROUTES = [
         component: () => <div>TopArtist</div>,
       },
       {
-        path: "/explore/artists/:artistID",
+        path: "/explore/artist/:artistID",
         key: "EXPLORE_TRACK",
         exact: true,
         component: ArtistOverview,
       },
       {
-        path: "/explore/tracks/:trackID",
+        path: "/explore/track/:trackID",
         key: "EXPLORE_TRACK",
         exact: true,
         component: TrackOverview,

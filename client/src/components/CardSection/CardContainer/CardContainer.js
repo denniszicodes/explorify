@@ -1,29 +1,21 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const FlexContainer = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 100%;
-  height: 25rem;
-`;
-
 const CardList = styled.ul`
-  --column-size: 190px;
+  --column-size: 180px;
   display: grid;
-  overflow-y: hidden;
+  overflow: hidden;
   grid-auto-rows: 0;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
-  grid-gap: var(--spacing-size-sm-2);
-  padding-bottom: var(--spacing-size-sm-3);
+  grid-column-gap: var(--spacing-size-md-2);
 
   & li {
     list-style: none;
     text-shadow: 0px 2px 10px rgba(124, 97, 97, 0.3);
     isolation: isolate;
     flex: 1;
+    width: 100%;
   }
 
   &::-webkit-scrollbar-track {
@@ -46,11 +38,7 @@ const CardList = styled.ul`
 `;
 
 const CardContainer = ({ children, className }) => {
-  return (
-    <FlexContainer className={className}>
-      <CardList>{children}</CardList>
-    </FlexContainer>
-  );
+  return <CardList>{children}</CardList>;
 };
 
 export default CardContainer;

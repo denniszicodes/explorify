@@ -20,8 +20,15 @@ const filterByPopularity = (items) => {
   return filteredItems;
 };
 
-const FlexContainer = styled.div`
-  display: flex;
+const GridContainer = styled.div`
+  display: grid;
+  grid-gap: 24px;
+
+  & > * {
+    min-width: 0;
+  }
+
+  /* display: flex;
   flex-direction: column;
   width: 100%;
   gap: 3rem;
@@ -32,7 +39,7 @@ const FlexContainer = styled.div`
     @media ${theme.bp.desktopXS} {
       margin-bottom: 100rem;
     }
-  }
+  } */
 `;
 
 function SearchResults({ results }) {
@@ -48,14 +55,14 @@ function SearchResults({ results }) {
     results?.albums.items.length > 0 && sortByPopularity(results.albums.items);
 
   return (
-    <FlexContainer>
+    <GridContainer>
       {!artists && !tracks && !albums && <NothingFound />}
       {artists?.length > 0 ? <ArtistResults artists={artists} /> : null}
       {tracks?.length > 0 ? (
         <CardSection data={tracks} type={"track"} title="Tracks" />
       ) : null}
       {albums?.length > 0 ? <AlbumResults albums={albums} /> : null}
-    </FlexContainer>
+    </GridContainer>
   );
 }
 

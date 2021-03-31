@@ -13,16 +13,15 @@ const StyledLink = styled(Link)``;
 
 const ArtistWrapper = styled.div`
   & ${StyledLink} {
-    height: 25rem;
-    width: 20rem;
-    max-width: 20rem;
+    margin-bottom: 1rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--color-grey-1-50);
     border-radius: 0.5rem;
-    padding: 1.5rem;
+    padding: 2.2rem;
     box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
   }
 
@@ -32,13 +31,17 @@ const ArtistWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 16rem;
-  height: 16rem;
+  width: 100%;
   overflow: hidden;
   margin-bottom: var(--spacing-size-sm-1);
   position: relative;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
+
+  & img {
+    height: 100%;
+    width: 100%;
+  }
 
   & ${StyledIcon} {
     position: absolute;
@@ -59,8 +62,8 @@ const ImageWrapper = styled.div`
 
     & svg {
       fill: var(--color-white);
-      width: 3rem;
-      height: 3rem;
+      width: 18%;
+      height: 18%;
     }
   }
 `;
@@ -84,6 +87,9 @@ const SecondaryInfo = styled.p`
   text-align: center;
 `;
 
+const Info = styled.div`
+  min-height: 5rem;
+`;
 // ---------------------------------------
 // -------------  LOGIC
 // ---------------------------------------
@@ -132,8 +138,10 @@ const CardItem = ({ data, type }) => {
           )}
           <StyledIcon type="icon-notification" />
         </ImageWrapper>
-        <PrimaryInfo>{primaryInfo}</PrimaryInfo>
-        <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
+        <Info>
+          <PrimaryInfo>{primaryInfo}</PrimaryInfo>
+          <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
+        </Info>
       </StyledLink>
     </ArtistWrapper>
   );

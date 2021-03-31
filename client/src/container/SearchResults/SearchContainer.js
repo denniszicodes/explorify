@@ -13,6 +13,7 @@ const FixedSearchbar = styled.div`
 
 const FlexContainer = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100%;
   min-width: 100%;
 `;

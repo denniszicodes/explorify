@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
-const HeadlineContainer = styled.article`
+const HeadlineContainer = styled.section`
   display: flex;
   flex-direction: column;
   min-height: 25rem;
-  width: 100%;
+  min-width: 100%;
+  margin-bottom: 16px;
   text-transform: uppercase;
   color: var(--color-white);
 `;
