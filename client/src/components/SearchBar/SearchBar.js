@@ -1,90 +1,74 @@
 import React from "react";
 import Icon from "../Icons/Icon/Icon";
 import styled from "styled-components/macro";
-import theme from "../../styles/theme";
-import mixins from "../../styles/mixins";
+
+const SearchInput = styled.input`
+  height: 3.5rem;
+  width: 30rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  padding-left: 1.5rem;
+
+  &:active,
+  &:focus {
+    border: 2px solid var(--color-spotify-green);
+    outline: none;
+  }
+`;
+
+const ScreenReaderLabel = styled.span`
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`;
 
 const SearchForm = styled.form`
   position: relative;
-  height: 100%;
 `;
 
-const SearchInput = styled.input`
-  background: var(--color-grey-2);
-  width: 0px;
-  height: 100%;
-  border: 0;
-  border-radius: 20px;
-  padding-left: var(--font-size-lg);
-
-  transition: all 1s;
-
-  &:focus {
-    width: 40rem;
-    background: var(--color-grey-6);
-    border: 2px solid var(--color-spotify-green);
-    padding-right: 4.2rem;
-  }
-
-  &::-webkit-search-decoration,
-  &::-webkit-search-cancel-button {
-    display: none;
-  }
-`;
-
-const SearchButton = styled.button`
+const SearchIcon = styled(Icon)`
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 4rem;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-
-  &:hover svg {
-    fill: var(--color-spotify-green);
-  }
-
-  & div {
-    ${mixins.flexCenter}
-    background-color: var(--color-grey-3);
-
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-  }
+  top: 0.65rem;
+  right: 1rem;
 
   & svg {
-    fill: var(--color-white);
-    width: 40%;
-    height: 40%;
-    transition: ${theme.transition};
-  }
-
-  &:focus + ${SearchInput} {
-    width: 40rem;
-    background: var(--color-grey-6);
-    border: 2px solid var(--color-spotify-green);
-    padding-right: 4.2rem;
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-2);
   }
 `;
 
-const SearchIcon = () => {
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
-    <>
-      <SearchForm>
-        <SearchButton type="button">
-          <Icon type="icon-search" />
-        </SearchButton>
-        <SearchInput
-          type="search"
-          placeholder="Search for Songs, Artists, ..."
-          required={true}
-        />
-      </SearchForm>
-    </>
+    <SearchForm
+      action="/"
+      method="get"
+      autoComplete="off"
+      onSubmit={(e) => e.preventDefault()}
+    >
+      <label htmlFor="header-search">
+        <ScreenReaderLabel>
+          Search for your favorite tracks, aritsts, ...
+        </ScreenReaderLabel>
+      </label>
+      <SearchInput
+        value={searchQuery}
+        onInput={(e) => setSearchQuery(e.target.value)}
+        type="text"
+        id="header-search"
+        placeholder="Search"
+        name="s"
+        spellcheck="false"
+        autoFocus
+      />
+      <SearchIcon type="icon-search" />
+    </SearchForm>
   );
 };
 
-export default SearchIcon;
+export default SearchBar;

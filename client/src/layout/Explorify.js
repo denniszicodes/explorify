@@ -24,7 +24,6 @@ const AppContainer = styled.div`
   font-size: var(--font-size-md);
 
   @media ${theme.bp.desktopXS} {
-    height: 100%;
     width: 100%;
     flex-direction: column;
   }
@@ -50,6 +49,10 @@ const Page = styled.main`
   overflow: scroll;
   overflow-x: hidden;
   overflow-y: auto;
+
+  @media ${theme.bp.desktopXS} {
+    margin-bottom: 7rem;
+  }
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);

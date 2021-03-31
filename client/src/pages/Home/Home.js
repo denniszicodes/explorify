@@ -1,6 +1,6 @@
 import React from "react";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
-import TopArtist from "../../container/TopArtist/TopArtist";
+import TopArtist from "../../container/ArtistAndTracks/TopArtist/TopArtist";
 import TopArtistScroller from "../../container/TopArtistScroller/TopArtistScroller";
 import RecentlyPlayedSongs from "../../container/RecentlyPlayedSongs/RecentlyPlayedSongs";
 import TopTracks from "../../container/TopTracks/TopTracks";
@@ -32,10 +32,6 @@ const SongOverview = styled.div`
 
   @media ${theme.bp.desktopM} {
     flex-direction: column;
-  }
-
-  @media ${theme.bp.desktopXS} {
-    margin-bottom: var(--spacing-size-xl-2);
   }
 `;
 

@@ -30,7 +30,7 @@ const SongTitle = styled.p`
       position: absolute;
       content: "";
       top: 2.1rem;
-      height: 0.25rem;
+      height: 0.22rem;
       width: 0;
       background-color: var(--color-spotify-green);
       transition: all 0.3s ease-in-out;
@@ -93,6 +93,7 @@ const SongIndex = styled.p`
 const AlbumCover = styled.img`
   min-height: 6.4rem;
   min-width: 6.4rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
 `;
 
 const Duration = styled.time`
