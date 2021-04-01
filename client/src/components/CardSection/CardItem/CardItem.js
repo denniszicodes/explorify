@@ -14,6 +14,7 @@ const StyledLink = styled(Link)``;
 const ArtistWrapper = styled.div`
   transition: background-color 0.3s;
   margin-top: 1rem;
+
   & ${StyledLink} {
     margin-bottom: 1rem;
     height: 100%;

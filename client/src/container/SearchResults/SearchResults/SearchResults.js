@@ -4,7 +4,6 @@ import AlbumResults from "./AlbumResults/AlbumResults";
 import CardSection from "../../../components/CardSection/CardSection";
 import styled from "styled-components/macro";
 import NothingFound from "../NothingFound/NothingFound";
-import theme from "../../../styles/theme";
 
 const sortByPopularity = (items) => {
   if (!items) return;
@@ -22,7 +21,7 @@ const filterByPopularity = (items) => {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-gap: 24px;
+  grid-gap: 2.4rem;
 
   & > * {
     min-width: 0;

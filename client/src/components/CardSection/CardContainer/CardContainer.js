@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+import theme from "../../../styles/theme";
+
 const CardList = styled.ul`
   --column-size: 180px;
   display: grid;
@@ -9,6 +11,22 @@ const CardList = styled.ul`
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   column-gap: var(--spacing-size-md-2);
+
+  @media ${theme.bp.desktopXS} {
+    --column-size: 160px;
+  }
+
+  @media ${theme.bp.tabletL} {
+    --column-size: 150px;
+  }
+
+  @media ${theme.bp.mobileL} {
+    --column-size: 120px;
+  }
+
+  @media ${theme.bp.mobileS} {
+    --column-size: 100px;
+  }
 
   & li {
     list-style: none;
