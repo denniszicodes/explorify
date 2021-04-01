@@ -20,11 +20,18 @@ const ContainerHeader = styled.div`
   min-width: 0;
 `;
 
+const HeadlineWrapper = styled.div`
+  min-width: 0;
+`;
+
 const Headline = styled.h1`
   position: relative;
   font-size: var(--font-size-xl);
   letter-spacing: 1.7px;
   font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const UnderLine = styled.div`
@@ -33,10 +40,11 @@ const UnderLine = styled.div`
   background-color: var(--color-spotify-green);
 `;
 
-const SeeMoreLink = styled(Link)`
+const ShowMoreLink = styled(Link)`
   font-size: 1.3rem;
   color: var(--color-spotify-green);
   transition: all 0.3s;
+  flex-shrink: 0;
 
   &:hover {
     color: var(--color-spotify-logo-green);
@@ -47,11 +55,11 @@ const TitleWrapper = ({ children, headline, link }) => {
   return (
     <HeadlineContainer>
       <ContainerHeader>
-        <Headline>
-          {headline}
+        <HeadlineWrapper>
+          <Headline>{headline}</Headline>
           <UnderLine />
-        </Headline>
-        <SeeMoreLink to={link}>Show more</SeeMoreLink>
+        </HeadlineWrapper>
+        <ShowMoreLink to={link}>Show more</ShowMoreLink>
       </ContainerHeader>
       {children}
     </HeadlineContainer>

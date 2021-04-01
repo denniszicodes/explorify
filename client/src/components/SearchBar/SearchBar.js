@@ -3,7 +3,7 @@ import Icon from "../Icons/Icon/Icon";
 import styled from "styled-components/macro";
 
 const SearchInput = styled.input`
-  height: 3.5rem;
+  height: 4rem;
   border-radius: 2rem;
   border: 2px solid transparent;
   transition: all 0.2s;
@@ -33,7 +33,7 @@ const SearchForm = styled.form`
 
 const SearchIcon = styled(Icon)`
   position: absolute;
-  top: 0.65rem;
+  top: 0.9rem;
   right: 1rem;
 
   & svg {

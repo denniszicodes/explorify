@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults/SearchResults";
 
 const FixedSearchbar = styled.div`
   position: fixed;
-  top: 1.8rem;
+  top: 14px;
   width: 20%;
   min-width: 20rem;
 `;

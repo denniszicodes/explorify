@@ -46,6 +46,7 @@ const HeadphoneIcon = styled(Icon)`
 const Sub = styled.p`
   font-weight: 300;
   font-size: var(--font-size-md-2);
+  text-align: center;
 `;
 
 const Headline = styled.h1`
