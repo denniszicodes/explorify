@@ -9,6 +9,8 @@ import SearchResults from "./SearchResults/SearchResults";
 const FixedSearchbar = styled.div`
   position: fixed;
   top: 1.8rem;
+  width: 20%;
+  min-width: 20rem;
 `;
 
 const FlexContainer = styled.div`
@@ -20,7 +22,6 @@ const FlexContainer = styled.div`
 
 const SearchContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
   const { data: user } = useSWR("/me");
 
   const { data: searchResult } = useSWR(
@@ -33,8 +34,6 @@ const SearchContainer = () => {
         user.country
       }&limit=20`
   );
-
-  searchResult && console.log(searchResult);
 
   let component = (searchQuery === "" && <WelcomeScreen />) ||
     (searchResult && <SearchResults results={searchResult} />) || <Loader />;

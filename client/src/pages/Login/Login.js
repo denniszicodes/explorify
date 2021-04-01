@@ -93,7 +93,11 @@ const LoginButton = styled.a`
 
   border-radius: 10rem;
   outline: none;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-spotify-logo-green);
+  }
 `;
 
 const Login = () => {

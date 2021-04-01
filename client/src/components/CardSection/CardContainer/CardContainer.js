@@ -8,7 +8,7 @@ const CardList = styled.ul`
   grid-auto-rows: 0;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
-  grid-column-gap: var(--spacing-size-md-2);
+  column-gap: var(--spacing-size-md-2);
 
   & li {
     list-style: none;
@@ -37,7 +37,7 @@ const CardList = styled.ul`
   }
 `;
 
-const CardContainer = ({ children, className }) => {
+const CardContainer = ({ children }) => {
   return <CardList>{children}</CardList>;
 };
 

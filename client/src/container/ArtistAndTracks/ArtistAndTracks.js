@@ -77,8 +77,6 @@ const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
   );
 
-  console.log(tracks);
-
   const imageURL = artist.images.length > 0 && artist.images[1].url;
 
   return (

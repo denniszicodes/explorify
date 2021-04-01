@@ -12,6 +12,8 @@ const StyledIcon = styled(Icon)``;
 const StyledLink = styled(Link)``;
 
 const ArtistWrapper = styled.div`
+  transition: background-color 0.3s;
+  margin-top: 1rem;
   & ${StyledLink} {
     margin-bottom: 1rem;
     height: 100%;
@@ -23,6 +25,10 @@ const ArtistWrapper = styled.div`
     border-radius: 0.5rem;
     padding: 2.2rem;
     box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
+  }
+
+  &:hover {
+    background-color: var(--color-grey-3);
   }
 
   &:hover ${StyledIcon} {
@@ -37,10 +43,17 @@ const ImageWrapper = styled.div`
   position: relative;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
+  padding-bottom: 100%;
 
   & img {
     height: 100%;
     width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   & ${StyledIcon} {
@@ -71,24 +84,24 @@ const ImageWrapper = styled.div`
 const PrimaryInfo = styled.p`
   font-weight: bold;
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
 `;
 
 const SecondaryInfo = styled.p`
   color: var(--color-grey-4);
   font-size: var(--font-size-sm);
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
 `;
 
 const Info = styled.div`
   min-height: 5rem;
+  overflow: hidden;
+  width: 100%;
+
+  & p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
 `;
 // ---------------------------------------
 // -------------  LOGIC
@@ -96,7 +109,7 @@ const Info = styled.div`
 
 const processData = (data, type) => {
   let link = `${type}/${data.id}`;
-  let imageURL = data.images?.length > 0 && data.images[1].url;
+  let imageURL = data.images?.length > 0 && data.images[0].url;
   let primaryInfo = data.name;
   let secondaryInfo;
 

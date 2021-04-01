@@ -7,9 +7,9 @@ const HeadlineContainer = styled.section`
   flex-direction: column;
   min-height: 25rem;
   min-width: 100%;
-  margin-bottom: 16px;
   text-transform: uppercase;
   color: var(--color-white);
+  gap: 2rem;
 `;
 
 const ContainerHeader = styled.div`
@@ -17,7 +17,6 @@ const ContainerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  padding-bottom: var(--spacing-size-lg-2);
   min-width: 0;
 `;
 
@@ -26,17 +25,12 @@ const Headline = styled.h1`
   font-size: var(--font-size-xl);
   letter-spacing: 1.7px;
   font-weight: bold;
+`;
 
-  &::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    top: 3.7rem;
-    left: 0;
-    width: 13rem;
-    height: 0.4rem;
-    background-color: var(--color-spotify-green);
-  }
+const UnderLine = styled.div`
+  width: 13rem;
+  height: 0.4rem;
+  background-color: var(--color-spotify-green);
 `;
 
 const SeeMoreLink = styled(Link)`
@@ -53,7 +47,10 @@ const TitleWrapper = ({ children, headline, link }) => {
   return (
     <HeadlineContainer>
       <ContainerHeader>
-        <Headline>{headline}</Headline>
+        <Headline>
+          {headline}
+          <UnderLine />
+        </Headline>
         <SeeMoreLink to={link}>Show more</SeeMoreLink>
       </ContainerHeader>
       {children}

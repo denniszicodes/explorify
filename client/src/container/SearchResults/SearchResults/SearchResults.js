@@ -27,19 +27,6 @@ const GridContainer = styled.div`
   & > * {
     min-width: 0;
   }
-
-  /* display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 3rem;
-
-  &::last-child {
-    margin-bottom: 3rem;
-
-    @media ${theme.bp.desktopXS} {
-      margin-bottom: 100rem;
-    }
-  } */
 `;
 
 function SearchResults({ results }) {

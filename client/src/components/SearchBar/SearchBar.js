@@ -4,11 +4,11 @@ import styled from "styled-components/macro";
 
 const SearchInput = styled.input`
   height: 3.5rem;
-  width: 30rem;
   border-radius: 2rem;
   border: 2px solid transparent;
   transition: all 0.2s;
   padding-left: 1.5rem;
+  width: 100%;
 
   &:active,
   &:focus {
@@ -63,8 +63,8 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         id="header-search"
         placeholder="Search"
         name="s"
-        spellcheck="false"
         autoFocus
+        spellCheck="false"
       />
       <SearchIcon type="icon-search" />
     </SearchForm>

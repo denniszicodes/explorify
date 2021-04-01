@@ -10,7 +10,7 @@ const FlexContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 50%;
-  gap: 3rem;
+  margin-top: 10rem;
 `;
 
 const SearchIcon = styled(Icon)`
@@ -30,6 +30,7 @@ const SearchIcon = styled(Icon)`
 
 const HeadphoneIcon = styled(Icon)`
   fill: var(--color-white);
+  margin-bottom: 3rem;
 
   & svg {
     height: 12rem;
@@ -42,11 +43,18 @@ const HeadphoneIcon = styled(Icon)`
   }
 `;
 
+const Sub = styled.p`
+  font-weight: 300;
+  font-size: var(--font-size-md-2);
+`;
+
 const Headline = styled.h1`
   display: flex;
   align-items: center;
   color: var(--color-white);
   font-size: var(--font-size-xl);
+  font-weight: normal;
+  margin-bottom: 1rem;
 
   @media ${theme.bp.desktopXS} {
     font-size: var(--font-size-lg);
@@ -58,9 +66,9 @@ function WelcomeScreen() {
     <FlexContainer>
       <HeadphoneIcon type="icon-headphones" />
       <Headline>
-        Start <SearchIcon type="icon-search" /> for your favorite artists,
-        tracks or albums
+        Start <SearchIcon type="icon-search" /> searching ..
       </Headline>
+      <Sub>.. for your favorite artists, tracks or albums</Sub>
     </FlexContainer>
   );
 }
