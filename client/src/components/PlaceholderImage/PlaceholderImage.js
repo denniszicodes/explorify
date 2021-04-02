@@ -18,9 +18,9 @@ const PlaceholderWrapper = styled.div`
   }
 `;
 
-function PlaceholderImage() {
+function PlaceholderImage({ className }) {
   return (
-    <PlaceholderWrapper>
+    <PlaceholderWrapper className={className}>
       <Icon type="icon-user" />
     </PlaceholderWrapper>
   );

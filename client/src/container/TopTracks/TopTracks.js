@@ -4,7 +4,7 @@ import TitleWrapper from "../../components/TitleWrapper";
 import SongContainer from "../../components/SongContainer";
 import useSWR from "swr";
 
-function TopTracks({ timeRange = "short_term", limit = 15 }) {
+function TopTracks({ timeRange = "short_term", limit = 10 }) {
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=${timeRange}&limit=${limit}`
   );

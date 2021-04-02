@@ -4,7 +4,7 @@ import TitleWrapper from "../../components/TitleWrapper";
 import SongContainer from "../../components/SongContainer";
 import useSWR from "swr";
 
-function RecentlyPlayedSongs({ limit = 15 }) {
+function RecentlyPlayedSongs({ limit = 10 }) {
   const { data: recentlyPlayedSongsData } = useSWR(
     `/me/player/recently-played?limit=${limit}`
   );

@@ -9,23 +9,31 @@ const ButtonStyled = styled.button`
   border: 2px solid var(--color-spotify-green);
   border-radius: 2rem;
   outline: none;
-  background-color: transparent;
+
+  background-color: ${({ main }) =>
+    main ? "var(--color-spotify-green)" : "transparent"};
+  color: ${({ main }) =>
+    main ? "var(--color-white)" : "var(--color-spotify-green)"};
 
   font-size: var(--font-size-sm);
-  color: var(--color-spotify-green);
   font-weight: bold;
 
   cursor: pointer;
   transition: ${theme.transition};
 
   &:hover {
-    background-color: var(--color-spotify-green);
+    background-color: ${({ main }) =>
+      main ? "var(--color-spotify-logo-green)" : "var(--color-spotify-green)"};
     color: var(--color-white);
   }
 `;
 
-const Button = ({ onClick, children }) => {
-  return <ButtonStyled onClick={onClick}>{children}</ButtonStyled>;
+const Button = ({ onClick, children, className, main }) => {
+  return (
+    <ButtonStyled className={className} onClick={onClick} main={main}>
+      {children}
+    </ButtonStyled>
+  );
 };
 
 export default Button;

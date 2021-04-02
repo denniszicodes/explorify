@@ -15,7 +15,7 @@ const sortByPopularity = (items) => {
 const filterByPopularity = (items) => {
   if (!items) return;
 
-  const filteredItems = [...items].filter((item) => item.popularity > 35);
+  const filteredItems = [...items].filter((item) => item.popularity > 15);
   return filteredItems;
 };
 

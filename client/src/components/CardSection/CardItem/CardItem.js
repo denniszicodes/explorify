@@ -10,6 +10,7 @@ import styled from "styled-components/macro";
 
 const StyledIcon = styled(Icon)``;
 const StyledLink = styled(Link)``;
+const StyledPlaceholderImage = styled(PlaceholderImage)``;
 
 const ArtistWrapper = styled.div`
   transition: background-color 0.3s;
@@ -46,10 +47,10 @@ const ImageWrapper = styled.div`
   border-radius: ${({ type }) => type === "artist" && "100%"};
   padding-bottom: 100%;
 
-  & img {
+  & img,
+  ${StyledPlaceholderImage} {
     height: 100%;
     width: 100%;
-    display: block;
     object-fit: cover;
     object-position: center center;
     position: absolute;
@@ -148,7 +149,7 @@ const CardItem = ({ data, type }) => {
           {imageURL ? (
             <img src={imageURL} alt={`${secondaryInfo}`} />
           ) : (
-            <PlaceholderImage />
+            <StyledPlaceholderImage />
           )}
           <StyledIcon type="icon-notification" />
         </ImageWrapper>

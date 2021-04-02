@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   --font-size-xl: 2.4rem;
   --font-size-xxl: 2.8rem;
   --font-size-xxxl: 3.0rem;
+  --font-size-xxxxl: 4.5rem;
 
   --spacing-size-base: 2rem;
   --spacing-size-xxs: 0.20rem;
